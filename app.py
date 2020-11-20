@@ -9,7 +9,10 @@ def translate(word):
     if word in data:
         return data[word]
     elif len(get_close_matches(word, data.keys())) > 0:
-        return f"Did you mean {} instead ?" get_close_matches(word, data.keys())[0]
+        word_other = get_close_matches(word, data.keys())[0]
+        yn = input(f"Did you mean {word_other} instead? Enter Y if yes, or N if No: ").capitalize()
+        if yn == "Y":
+            return data[word_other]
     else:
         return "The word doesn't exist. Please check it."
 

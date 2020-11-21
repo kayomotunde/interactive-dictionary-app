@@ -13,9 +13,19 @@ def translate(word):
         yn = input(f"Did you mean {word_other} instead? Enter Y if yes, or N if No: ").capitalize()
         if yn == "Y":
             return data[word_other]
+        elif yn == "N":
+            return "The word doesn't exist. Please check it."
+        else:
+            return "We didnt understand your entry."
     else:
         return "The word doesn't exist. Please check it."
 
 word = input("Enter word: ")
 
-print(translate(word))
+output = translate(word)
+
+if type(output) == list:
+    for item in output:
+        print(item)
+else:
+    print(output)
